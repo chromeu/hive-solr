@@ -7,10 +7,28 @@
 	<name>Hive SOLR</name>
 	<repositories>
 		<repository>
-			<id>apache-repository</id>
-			<url>https://repository.apache.org/content/groups/public/</url>
+			<id>vippublic</id>
+			<name>vipshop private nexus</name>
+			<url>http://10.101.0.2:8081/nexus/content/repositories/public/</url>
+		</repository>
+		<repository>
+			<id>cloudera</id>
+			<url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
 		</repository>
 	</repositories>
+	
+	<properties>
+		<hadoop.version>2.0.0-cdh4.2.0</hadoop.version>
+		
+		<!-- by tony,update hive version
+		<hive.version>0.10.0-cdh4.2.0</hive.version>
+		-->
+		<hive.version>0.11.0</hive.version>
+		
+		<mr.version>2.0.0-mr1-cdh4.2.0</mr.version>
+		<project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
+	</properties>
+	
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -71,14 +89,14 @@
 		<dependency>
 			<groupId>org.apache.hive</groupId>
 			<artifactId>hive-metastore</artifactId>
-			<version>0.12.0</version>
+			<version>${hive.version}</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hive</groupId>
 			<artifactId>hive-serde</artifactId>
-			<version>0.12.0</version>
+			<version>${hive.version}</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
@@ -98,7 +116,7 @@
 		<dependency>
 			<groupId>org.apache.hive</groupId>
 			<artifactId>hive-exec</artifactId>
-			<version>0.12.0</version>
+			<version>${hive.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -109,8 +127,18 @@
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-core</artifactId>
-			<version>1.2.1</version>
+			<version>${mr.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-hdfs</artifactId>
+			<version>${hadoop.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-common</artifactId>
+			<version>${hadoop.version}</version>
 		</dependency>
 	</dependencies>
 </project>

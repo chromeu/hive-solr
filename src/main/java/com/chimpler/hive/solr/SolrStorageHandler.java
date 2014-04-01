@@ -120,7 +120,6 @@ public class SolrStorageHandler implements HiveStorageHandler {
 		ConfigurationUtil.copySolrProperties(properties, jobProperties);
 	}
 
-	@Override
 	public void configureJobConf(TableDesc tableDescription, JobConf config) {
 		Properties properties = tableDescription.getProperties();
 		ConfigurationUtil.copySolrProperties(properties, config);
